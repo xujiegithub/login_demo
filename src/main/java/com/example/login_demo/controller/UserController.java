@@ -43,6 +43,7 @@ public class UserController {
         return modelAndView;
     }
 
+    //用户登陆
     @RequestMapping("/login")
     @ResponseBody
     public Object login(HttpServletResponse req, HttpServletRequest request) {
@@ -50,7 +51,6 @@ public class UserController {
         user1.setAccount(request.getParameter("account"));
         user1.setPassword(request.getParameter("password"));
         User u = userMapper.login(user1);
-
 
         if (u != null) {
             ArrayList<User> list = new ArrayList<>();
@@ -74,7 +74,7 @@ public class UserController {
         String password = request.getParameter("password");
         ModelAndView mv = new ModelAndView();
         User user = new User();
-//        user.setId(userMapper.getMaxId()+1);
+////        user.setId(userMapper.getMaxId()+1);
         user.setName(name);
         user.setPassword(password);
         boolean flag = userMapper.addUser(user);
@@ -92,4 +92,16 @@ public class UserController {
             return  "error";
         }*/
     }
+//    @ResponseBody
+//    @RequestMapping("/changePwd")
+//    public Object changePwd(String account,String   pwd_old, String pwd_new){
+//        User user1 = new User();
+//        user1.setAccount(account);
+//        user1.setPassword(pwd_old);
+//        User u = userMapper.login(user1);
+//        if(u!=null){
+//            userMapper.changePwd(account,pwd_old,pwd_new);
+//        }
+//        return null;
+//    }
 }

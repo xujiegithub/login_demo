@@ -2,11 +2,6 @@ package com.example.login_demo.util;
 
 
 import lombok.Data;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONNull;
-import net.sf.json.JSONObject;
-
-import java.util.Iterator;
 
 @Data
 public class ReturnResult {
@@ -47,18 +42,18 @@ public class ReturnResult {
      * @param msg
      * @return 返回成功，包含total、code、msg、info
      */
-    public static ReturnResult success(Boolean success, String msg,Object info) {
+    public static ReturnResult success(Boolean success, String msg, Object info) {
         return new ReturnResult(success,msg,info);
     }
 
-    public static ReturnResult success(Boolean success,String msg){
+    public static ReturnResult success(Boolean success, String msg){
         return new ReturnResult(success,msg);
     }
 
     public static ReturnResult error (String msg){
         return new ReturnResult(ReturnMsg.ERROR.getErrCode(),msg);
     }
-    public static ReturnResult error (String msg,Object info){
+    public static ReturnResult error (String msg, Object info){
         return new ReturnResult(ReturnMsg.ERROR.getErrCode(),msg,info);
     }
     /***

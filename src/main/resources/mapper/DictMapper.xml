@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.login_demo.dao.DictMapper">
+
+    <resultMap type="com.example.login_demo.entity.Dict" id="DictResult">
+        <result property="id" column="id"/>
+        <result property="code" column="code"/>
+        <result property="name" column="name"/>
+        <result property="parentId" column="parent_id"/>
+        <result property="isSealup" column="is_sealup"/>
+        <result property="ord" column="ord"/>
+        <result property="note" column="note"/>
+    </resultMap>
+
+    <select id="dictList" parameterType="com.example.login_demo.entity.Dict" resultMap="DictResult">
+          select
+          id,
+          code,
+          name,
+          parent_id,
+          is_sealup,
+          ord,
+          note
+          FROM
+          T_DICT
+          WHERE
+          parent_id=#{parentId}
+    </select>
+</mapper>

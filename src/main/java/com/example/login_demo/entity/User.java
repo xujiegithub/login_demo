@@ -1,28 +1,44 @@
 package com.example.login_demo.entity;
 
-import com.alibaba.fastjson.JSON;
-
 import java.util.Date;
 
 public class User {
 
+    /** 账户*/
     private String account;
+    /** 密码*/
     private String password;
+    /** 姓名*/
     private String name;
+    /** 固定电话*/
     private String office_telephone;
+    /** 手机*/
     private String hand_telephone;
+    /** */
     private Integer pwd_min_len;
+    /** 账户*/
     private String ord;
+    /** 账户*/
     private String visit_host;
+    /** 密码更新时间*/
     private Date pwd_valid_date;
+    /** 密码更新日期*/
     private Integer pwd_valid_days;
+    /** 主机访问锁*/
     private Integer lock_visit_host;
+    /** 域名*/
     private String deptname;
+    /** 账户*/
     private String functionids;
+    /** 公司id*/
     private Integer corp_id;
+    /** 是否使用*/
     private Integer is_stop;
+
     private String note;
+
     private String date_greate;
+
     private String gh;
 
 

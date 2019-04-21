@@ -47,6 +47,9 @@
         #{password})
     </insert>
 
+    <!--<update id="changePwd" parameterType="com.example.login_demo.entity.User">-->
+        <!---->
+    <!--</update>-->
 
 
 

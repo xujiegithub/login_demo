@@ -10,4 +10,5 @@ public interface UserMapper {
 
     User login(User user);
 
+//    void changePwd(String account, String pwd_old, String pwd_new);
 }

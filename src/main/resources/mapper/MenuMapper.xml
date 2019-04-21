@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.login_demo.dao.MenuMapper">
+
+    <resultMap type="com.example.login_demo.entity.Menu" id="MenuResult">
+        <result property="id" column="T_ID" />
+        <result property="name" column="T_NAME" />
+        <result property="pid" column="T_PID" />
+        <result property="order" column="T_ORDER" />
+        <result property="state" column="T_STATE" />
+        <result property="type" column="T_TYPE" />
+
+    </resultMap>
+
+    <select id="getMaxId" parameterType="Integer" resultType="java.lang.Integer">
+        select
+        max(T_ID)
+        FROM
+        T_MENU
+    </select>
+    <select id="SelectByPid"  resultType="Integer" resultMap="MenuResult">
+        SELECT
+        T_ID,
+        T_NAME,
+        T_PID,
+        T_ORDER,
+        T_STATE,
+        T_TYPE
+        FROM
+        T_MENU
+        where
+        T_PID=#{pid}
+    </select>
+
+    <select id="SelectAllByPid" parameterType="com.example.login_demo.entity.Menu" resultMap="MenuResult">
+        SELECT
+        T_ID,
+        T_NAME,
+        T_PID,
+        T_ORDER,
+        T_STATE,
+        T_TYPE
+        FROM
+        T_MENU
+        where
+        T_PID=#{pid}
+    </select>
+
+    <insert id="AddMenu" parameterType="com.example.login_demo.entity.Menu" >
+        INSERT
+        INTO
+        T_MENU
+        (T_ID,
+        T_PID,
+        T_TYPE,
+        T_NAME,
+        T_STATE,
+        T_ORDER)
+        VALUES (
+        #{id},
+        #{pid},
+        #{type},
+        #{name},
+        #{state},
+        #{order}
+        )
+    </insert>
+
+    <update id="SaveMenu" parameterType="com.example.login_demo.entity.Menu">
+        UPDATE
+        T_MENU
+        SET
+        T_NAME=#{name},
+        T_STATE=#{state},
+        T_ORDER=#{order}
+        WHERE
+        T_ID=#{id}
+    </update>
+
+    <delete id="DeleteMunu" parameterType="com.example.login_demo.entity.Menu">
+        DELETE
+        FROM
+        T_MENU
+        WHERE
+        T_ID=#{id}
+    </delete>
+
+    <select id="SelectByPidType" parameterType="com.example.login_demo.entity.Menu" resultMap="MenuResult">
+        SELECT
+        T_ID,
+        T_NAME,
+        T_PID,
+        T_ORDER,
+        T_STATE,
+        T_TYPE
+        FROM
+        T_MENU
+        where
+        T_PID=#{pid}
+        AND
+        T_TYPE=#{type}
+    </select>
+
+    <insert id="addItem" parameterType="com.example.login_demo.entity.Menu">
+        INSERT
+        INTO
+        T_MENU
+        (T_ID,
+        T_PID,
+        T_TYPE,
+        T_NAME,
+        T_STATE,
+        T_ORDER)
+        VALUES (
+        #{id},
+        #{pid},
+        #{type},
+        #{name},
+        #{state},
+        #{order}
+        )
+    </insert>
+
+    <update id="SaveItem" parameterType="com.example.login_demo.entity.Menu">
+        UPDATE
+        T_MENU
+        SET
+        T_NAME=#{name},
+        T_STATE=#{state}
+        WHERE
+        T_ID=#{id}
+    </update>
+
+    <delete id="deleteItem" parameterType="java.lang.Integer">
+        DELETE
+        FROM
+        T_MENU
+        WHERE
+        T_ID=#{id}
+    </delete>
+
+    <update id="moveItem" parameterType="com.example.login_demo.entity.Menu" >
+        UPDATE
+        T_MENU
+        SET
+        T_ORDER=#{order}
+        WHERE
+        T_ID=#{id}
+    </update>
+</mapper>
